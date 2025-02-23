@@ -1,11 +1,18 @@
-const { defineConfig } = require('cypress')
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    // We've imported your old cypress plugins here.
-    // You may want to clean this up later by importing these.
+    baseUrl: "https://www.99.co/singapore",  // Base URL for all test suites
+    chromeWebSecurity: false, // Disable security checks
     setupNodeEvents(on, config) {
-      return require('./cypress/plugins/index.js')(on, config)
+      on("before:browser:launch", (browser = {}, launchOptions) => {
+        if (browser.name === "electron") {
+          launchOptions.args.push("--disable-popup-blocking");
+          launchOptions.args.push("--imageEnabled");
+        }
+        return launchOptions;
+      });
     },
   },
-})
+});
+

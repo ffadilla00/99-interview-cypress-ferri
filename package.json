@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "QA tech challenge",
   "main": "index.js",
-  "dependencies": {
-    "cypress": "^13.6.1"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yeow Ji Mi",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.0.3"
+  }
 }
